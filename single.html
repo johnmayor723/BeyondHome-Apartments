@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Beyond Home - Apartments</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .hero {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: gold;
+  font-size: 1.5rem;
+  text-align: center;
+  text-shadow: 2px 2px 8px black;
+}
+
+@media (min-width: 768px) {
+  .hero-text {
+    font-size: 2.5rem;
+  }
+}
+
+/* Slideshow animations */
+.fade {
+  animation: fade 3s infinite;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.apartment-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.apartment-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apartment-card img {
+  width: 100%;
+  display: block;
+}
+
+.apartment-card h3 {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.apartment-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .apartment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .apartment-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+.about-us {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 40px;
+  background-color: #fff;
+  color: #000;
+}
+
+.about-description {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.about-description h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: gold;
+}
+
+.about-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.about-video iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-us {
+    grid-template-columns: 1fr;
+  }
+
+  .about-description,
+  .about-video {
+    padding: 15px;
+  }
+
+  .about-video iframe {
+    height: 250px;
+  }
+}
+
+.apartment-details {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: white;
+  color: black;
+}
+
+.image-gallery img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 10px;
+}
+
+.gallery-thumbnails img {
+  width: 30%;
+  border: 2px solid gold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.details h1 {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.details p {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.details ul li {
+  margin: 5px 0;
+}
+
+.inquiry-button {
+  margin-top: 20px;
+  background-color: gold;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .apartment-details {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .image-gallery {
+    flex: 1;
+  }
+
+  .details {
+    flex: 1;
+  }
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid nav-bar p-0">
+        <div class="container-lg p-0">
+            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="m-0 text-white display-4">
+                        <img height="70px" src="img/logo-1.png"
+                    </h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="pricing.html" class="nav-item nav-link">Pricing</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="single.html" class="dropdown-item">Blog Detail</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+ <section class="hero">
+  <div class="slideshow-container">
+    <div class="slide fade">
+      <img src="apartment1.jpg" alt="Luxury Apartment 1">
+      <div class="hero-text">Luxury Living Awaits</div>
+    </div>
+    <div class="slide fade">
+      <img src="apartment2.jpg" alt="Luxury Apartment 2">
+      <div class="hero-text">Elegance & Comfort</div>
+    </div>
+    <div class="slide fade">
+      <img src="apartment3.jpg" alt="Luxury Apartment 3">
+      <div class="hero-text">Your Perfect Stay</div>
+    </div>
+  </div>
+</section>
+    <!-- Carousel End -->
+
+
+    <!-- About Start --><section class="about-us">
+  <div class="about-description">
+    <h2>About Beyond Home</h2>
+    <p>
+      Beyond Home offers premium short-stay luxury apartments tailored to meet your comfort and style needs. 
+      Located in prime areas, our apartments combine exquisite design, state-of-the-art amenities, 
+      and world-class hospitality to redefine your experience of luxury living.
+    </p>
+    <p>
+      Whether you’re on a business trip, a family vacation, or simply seeking a serene getaway, 
+      Beyond Home ensures an unforgettable stay with attention to detail and unmatched quality.
+    </p>
+  </div>
+  <div class="about-video">
+    <iframe 
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+      title="Beyond Home Intro Video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+    <!-- About End -->
+
+
+<<section class="apartment-details">
+  <div class="image-gallery">
+    <img src="apartment-main.jpg" alt="Main View">
+    <div class="gallery-thumbnails">
+      <img src="thumb1.jpg" alt="Thumbnail 1">
+      <img src="thumb2.jpg" alt="Thumbnail 2">
+      <img src="thumb3.jpg" alt="Thumbnail 3">
+    </div>
+  </div>
+  <div class="details">
+    <h1>Victoria Penthouse Suite</h1>
+    <p>Experience unmatched luxury with breathtaking skyline views, modern amenities, and premium comfort.</p>
+    <ul>
+      <li><strong>Location:</strong> Victoria Island</li>
+      <li><strong>Rooms:</strong> 3 Bedrooms</li>
+      <li><strong>Features:</strong> Infinity Pool, Wi-Fi, Concierge</li>
+    </ul>
+    <button class="inquiry-button">Contact for Booking</button>
+  </div>
+</section>
+    
+   
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <small class="bg-primary text-white text-uppercase font-weight-bold px-1">What clients say</small>
+                    <h1 class="mt-2 mb-3">Clients Say About Our Services</h1>
+                    <h4 class="font-weight-normal text-muted mb-4"></h4>
+                    <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">Submit Review</a>
+                </div>
+                <div class="col-lg-8 mb-5">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="testimonial-item">
+                            <div class="testimonial-text position-relative border mb-4" style="padding: 25px 30px;">
+                                
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid rounded-circle" src="img/tes1.jpeg" style="width: 80px; height: 80px;" alt="Image">
+                                <div class="pl-4">
+                                    <h6 class="font-weight-bold">Temi</h6>
+                                    <i class="text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="testimonial-text position-relative border mb-4" style="padding: 25px 30px;">
+                                From logo design to brand strategy, they handled everything with professionalism and creativity. My brand now has a clear identity that stands out in the market.
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid rounded-circle" src="img/tes6.jpg" style="width: 80px; height: 80px;" alt="Image">
+                                <div class="pl-4">
+                                    <h6 class="font-weight-bold">Grace Adeoti</h6>
+                                    <i class="text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="testimonial-text position-relative border mb-4" style="padding: 25px 30px;">
+                               I can’t thank the team enough for bringing my app idea to life. Their development process was seamless, and the result was exactly what I envisioned.
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid rounded-circle" src="img/tes3.jpeg" style="width: 80px; height: 80px;" alt="Image">
+                                <div class="pl-4">
+                                    <h6 class="font-weight-bold">Client Name</h6>
+                                    <i class="text-muted">Profession</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="testimonial-text position-relative border mb-4" style="padding: 25px 30px;">
+                                The team delivered an incredible website that not only looks stunning but also functions flawlessly. My business has seen significant growth since partnering with them!"
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid rounded-circle" src="img/tes4.jpeg" style="width: 80px; height: 80px;" alt="Image">
+                                <div class="pl-4">
+                                    <h6 class="font-weight-bold">James Chukwuleta</h6>
+                                    <i class="text-muted">B</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <div class="testimonial-text position-relative border mb-4" style="padding: 25px 30px;">
+                                Working with this agency transformed my brand! Their attention to detail and creative approach to branding and marketing exceeded my expectations. Highly recommended!"
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid rounded-circle" src="img/tes5.jpeg" style="width: 80px; height: 80px;" alt="Image">
+                                <div class="pl-4">
+                                    <h6 class="font-weight-bold">Adeola. A</h6>
+                                    <i class="text-muted">P</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-white mt-5 pt-5 px-sm-3 px-md-5">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="index.html" class="navbar-brand">
+       <img  height="70px" src="img/logo-1.png" alt="Digital agency" />
+                </a>
+                <p></p>
+                <div class="d-flex justify-content-start mt-4">
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="font-weight-bold text-primary mb-4">Quick Links</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right text-primary mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right text-primary mr-2"></i>About Us</a>
+                    <a class="text-white mb-2" href="service.html"><i class="fa fa-angle-right text-primary mr-2"></i>Services</a>
+
+                    <a class="text-white" href="contact.html"><i class="fa fa-angle-right text-primary mr-2"></i>Contact Us</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="font-weight-bold text-primary mb-4">Popular Links</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right text-primary mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right text-primary mr-2"></i>About Us</a>
+                    <a class="text-white mb-2" href="service.html"><i class="fa fa-angle-right text-primary mr-2"></i>Services</a>
+             
+                    <a class="text-white" href="contact.html"><i class="fa fa-angle-right text-primary mr-2"></i>Contact Us</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="font-weight-bold text-primary mb-4">Get In Touch</h5>
+                <p></p>
+                <p><i class="fa fa-map-marker-alt text-primary mr-2"></i>302  Abisogun leigh, Ikeja</p>
+                <p><i class="fa fa-phone-alt text-primary mr-2"></i>+012 345 67890</p>
+                <p><i class="fa fa-envelope text-primary mr-2"></i>info@beyondhome.com.ng</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid py-4 px-sm-3 px-md-5">
+        <p class="m-0 text-center">
+            &copy; <a class="font-weight-semi-bold" href="beyondhome.com.ng">beyondhome</a>. All Rights Reserved. Designed by 
+            <a class="font-weight-semi-bold" href="Easyhostnet.com">Easyhostnet</a>
+        </p>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script>
+        let currentIndex = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlides() {
+  slides.forEach((slide, index) => {
+    slide.style.display = index === currentIndex ? "block" : "none";
+  });
+  currentIndex = (currentIndex + 1) % slides.length;
+}
+
+setInterval(showSlides, 3000);
+showSlides();
+    </script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
